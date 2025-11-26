@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Special App - Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+  <div class="center-box">
+    <h1>Welcome 💛</h1>
+    <p>Special Message Generator — sign up or login to get your personalized message.</p>
+    <div class="actions">
+      <a class="btn" href="{{ url_for('signup') }}">Sign Up</a>
+      <a class="btn alt" href="{{ url_for('login') }}">Log In</a>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
