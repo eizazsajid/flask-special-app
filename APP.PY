@@ -103,6 +103,24 @@ if __name__ == "__main__":
     # ensure DB exists
     if not os.path.exists(DB_PATH):
         print("Database not found. Run create_db.py first.")
-    app.run(debug=True)
+    app.run(debug=True) 
+  
+# forgot_password
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
 
+        # Check if user exists
+        conn = sqlite3.connect('users.db')
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM users WHERE email=?", (email,))
+        user = cur.fetchone()
+        conn.close()
 
+        if user:
+            flash("Password reset link sent to your email.", "success")
+        else:
+            flash("Email not found.", "error")
+
+    return render_template('forgot_password.html')
